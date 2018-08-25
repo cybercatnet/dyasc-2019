@@ -65,8 +65,7 @@ public class Main {
         }else {
             serieResult = fibo.getSerie(inputValue, Direction.DIRECT,
                     Orientation.HORIZONTAL);
-        }
-        
+        }        
         System.out.println(serieResult);
     }
 }
