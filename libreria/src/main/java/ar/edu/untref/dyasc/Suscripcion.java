@@ -1,7 +1,5 @@
 package ar.edu.untref.dyasc;
 
-import Enums.TipoOperacion;
-
 public class Suscripcion extends Operacion {
 
     public Suscripcion(RevistaPeriodico producto) {
@@ -12,8 +10,8 @@ public class Suscripcion extends Operacion {
     // El precio es el precio del producto por la periodicidad
     @Override
     public double getPrecio() {
-        double precio = producto.getPrecio() * ((RevistaPeriodico) producto).getPeriodicidad();
+        double precio = producto.getPrecio()
+                * ((RevistaPeriodico) producto).getPeriodicidad();
         return precio - precio * 0.2;
     }
-
 }

@@ -1,7 +1,5 @@
 package ar.edu.untref.dyasc;
 
-import Enums.TipoOperacion;
-
 public class Operacion {
     
     protected Producto producto;

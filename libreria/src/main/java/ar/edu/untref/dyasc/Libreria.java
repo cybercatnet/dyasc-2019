@@ -24,16 +24,17 @@ public class Libreria {
     public ArrayList<Cliente> getClientes() {
         return this.clientes;
     }
-    
-    public double getCobroMes(Cliente cliente,Mes mes){
+
+    public double getCobroMes(Cliente cliente, Mes mes) {
         return cliente.getCobroMes(mes);
     }
-    
-    public void venderProducto(Producto producto, Cliente cliente, Mes mes){
+
+    public void venderProducto(Producto producto, Cliente cliente, Mes mes) {
         cliente.adquirirProducto(producto, mes);
     }
-    
-    public void venderSuscripcionAnual(RevistaPeriodico producto, Cliente cliente){
+
+    public void venderSuscripcionAnual(RevistaPeriodico producto,
+            Cliente cliente) {
         cliente.adquirirSuscripcionAnual(producto);
     }
 }
