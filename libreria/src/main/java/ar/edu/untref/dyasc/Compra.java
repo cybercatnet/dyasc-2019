@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 
 public class Compra extends Operacion {
-    
+
     private boolean clienteRegistrado;
     
     public Compra(Producto producto, boolean clienteRegistrado) {

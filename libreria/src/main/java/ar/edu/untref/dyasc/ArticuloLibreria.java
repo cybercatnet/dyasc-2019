@@ -17,7 +17,7 @@ public class ArticuloLibreria extends Producto {
         this.IVA = IVA;
     }
 
-    //Devuelve el precio con el IVA aplicado
+    // Devuelve el precio con el IVA aplicado
     @Override
     public double getPrecio() {
         return precio + precio * IVA;

@@ -1,6 +1,7 @@
 package ar.edu.untref.dyasc;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import Enums.Mes;
 
@@ -25,8 +26,12 @@ public class Libreria {
         return this.clientes;
     }
 
-    public double getCobroMes(Cliente cliente, Mes mes) {
-        return cliente.getCobroMes(mes);
+    public Hashtable<Cliente, Double> getCobrosMes(Mes mes) {
+        Hashtable<Cliente, Double> cobros = new Hashtable<Cliente, Double>();
+        for (Cliente cliente : clientes) {
+            cobros.put(cliente, cliente.getCobroMes(mes));
+        }
+        return cobros;
     }
 
     public void venderProducto(Producto producto, Cliente cliente, Mes mes) {

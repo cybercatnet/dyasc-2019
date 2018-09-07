@@ -2,8 +2,8 @@ package ar.edu.untref.dyasc;
 
 public class Producto {
     protected double precio;
-    
-    public Producto(double precio){
+
+    public Producto(double precio) {
         this.precio = precio;
     }
 
