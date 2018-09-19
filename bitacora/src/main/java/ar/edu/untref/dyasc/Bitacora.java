@@ -1,29 +1,25 @@
 package ar.edu.untref.dyasc;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Bitacora {
 
-    private String nombreArchivoRegistro = "";
+    private ArrayList<BitacoraDestino> destinos = new ArrayList<BitacoraDestino>();
+    private DestinosMapeador mapeador = new DestinosMapeador();
 
-    public Bitacora() {
-    }
-
-    public Bitacora(String destino) {
-        this.nombreArchivoRegistro = destino;
+    public Bitacora(String argumentos) {
+        destinos = mapeador.mapearDestinos(argumentos);
     }
 
     public void registrarEvento(String descripcion) {
         String registro = generarRegistro(descripcion);
-        if (nombreArchivoRegistro.equals("")) {
-            imprimirRegistro(registro);
-        } else {
-            guardarRegistro(registro);
+        enviarADestinos(registro);
+    }
+
+    private void enviarADestinos(String registro) {
+        for (BitacoraDestino bitacoraDestino : destinos) {
+            bitacoraDestino.enviarADestino(registro);
         }
     }
 
@@ -37,27 +33,5 @@ public class Bitacora {
         String registroTiempo = String.format("%d/%d/%d %d:%d ", dia, mes,
                 anio, hora, minuto);
         return registroTiempo + descripcion;
-    }
-
-    private void imprimirRegistro(String registro) {
-        System.out.println(registro);
-    }
-
-    private void guardarRegistro(String registro) {
-        File archivo = new File(nombreArchivoRegistro);
-        String registroFinal;
-        try {
-            if (!archivo.exists()) {
-                archivo.createNewFile();
-                registroFinal = registro;
-            } else {
-                registroFinal = "\n" + registro;
-            }
-            Files.write(Paths.get(nombreArchivoRegistro),
-                    registroFinal.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            String errorStr = String.format("Error al escribir el archivo: %s", nombreArchivoRegistro);
-            System.out.println(errorStr);
-        }
     }
 }
