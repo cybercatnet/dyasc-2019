@@ -1,13 +1,8 @@
 package ar.edu.untref.dyasc;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import ar.edu.untref.dyasc.*;
-
-import cucumber.deps.com.thoughtworks.xstream.core.util.ClassLoaderReference;
 
 public class DestinosMapeador {
 

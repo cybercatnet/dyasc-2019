@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc;
 
-public class Main {
+public class Ejemplo {
 
     public static void main(String[] args) {
         // -Dbitacora.destino="test.txt, CONSOLA" para la salida

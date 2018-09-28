@@ -2,7 +2,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ar.edu.untref.dyasc</groupId>
-    <artifactId>nombre_de_proyecto</artifactId>
     <version>1.0.0</version>
     <dependencies>
         <dependency>
@@ -37,7 +36,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>nombre_de_proyecto</finalName>
+        <finalName>bitacora</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -62,11 +61,12 @@
                   <archive>
                     <manifest>
                       <addClasspath>true</addClasspath>
-                      <mainClass>ar.edu.untref.dyasc.Program</mainClass>
+                      <mainClass>ar.edu.untref.dyasc.Ejemplo</mainClass>
                     </manifest>
                   </archive>
                 </configuration>
               </plugin>
         </plugins>
     </build>
+    <artifactId>bitacora</artifactId>
 </project>
