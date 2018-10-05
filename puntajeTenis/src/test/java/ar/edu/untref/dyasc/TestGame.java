@@ -131,6 +131,65 @@ public class TestGame {
         Assert.assertEquals(Puntaje._0, puntajeJ1);
     }
     
+    @Test
+    public void enDeuce(){
+
+        Game game = new Game();
+
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        
+        Puntaje puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        Puntaje puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(Puntaje._40, puntajeJ2);
+        Assert.assertEquals(Puntaje._40, puntajeJ1);
+    }
+    
+    @Test
+    public void jugador2enVentaja(){
+
+        Game game = new Game();
+
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        
+        Puntaje puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        Puntaje puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(Puntaje._40, puntajeJ1);
+        Assert.assertEquals(Puntaje.VENTAJA, puntajeJ2);
+    }
+    
+    @Test
+    public void jugador2GanaEnDeuce(){
+
+        Game game = new Game();
+
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        
+        Puntaje puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        Puntaje puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(Puntaje._40, puntajeJ1);
+        Assert.assertEquals(Puntaje.GANO, puntajeJ2);
+    }
     
     
 }
