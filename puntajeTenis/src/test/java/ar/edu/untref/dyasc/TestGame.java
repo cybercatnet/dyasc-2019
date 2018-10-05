@@ -30,4 +30,32 @@ public class TestGame {
         Assert.assertEquals(0, puntajeJ2);
     }
     
+    @Test
+    public void sumar2PuntosAUnSoloJugador(){
+        Game game = new Game();
+    
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        int puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(30, puntajeJ1);
+        Assert.assertEquals(0, puntajeJ2);
+    }
+    
+    @Test
+    public void sumar3PuntosAUnSoloJugador(){
+        Game game = new Game();
+    
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        
+        int puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(40, puntajeJ1);
+        Assert.assertEquals(0, puntajeJ2);
+    }
+    
 }
