@@ -223,4 +223,15 @@ public class TestGame {
         
         Assert.assertTrue(game.finalizo());
     }
+    
+    @Test
+    public void noTerminarGameYVerificarQueNoSeTermino(){
+        Game game = new Game();
+    
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        
+        Assert.assertFalse(game.finalizo());
+    }
 }

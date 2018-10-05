@@ -64,7 +64,7 @@ public class Game {
     }
 
     public boolean finalizo() {
-        return true;
+        return puntuacion[puntosJugador1] == Puntaje.GANO || puntuacion[puntosJugador2] == Puntaje.GANO;
     }
 
 }
