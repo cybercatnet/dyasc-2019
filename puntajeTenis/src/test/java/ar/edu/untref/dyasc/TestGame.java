@@ -212,5 +212,15 @@ public class TestGame {
         Assert.assertEquals(Puntaje._40, puntajeJ2);
     }
     
+    @Test
+    public void terminarGameYVerificarQueSeTermino(){
+        Game game = new Game();
     
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        
+        Assert.assertTrue(game.finalizo());
+    }
 }

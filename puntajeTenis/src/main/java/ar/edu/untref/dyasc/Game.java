@@ -63,4 +63,8 @@ public class Game {
         return sumador + 1;
     }
 
+    public boolean finalizo() {
+        return true;
+    }
+
 }
