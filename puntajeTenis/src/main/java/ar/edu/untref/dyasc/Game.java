@@ -1,24 +1,36 @@
 package ar.edu.untref.dyasc;
 
+import Enums.Jugadores;
+
 public class Game {
 
-    private int puntosJugadorUno;
-    private int puntosJugadorDos;
+    private int puntosJugador1;
+    private int puntosJugador2;
     
     public Game(){
-        puntosJugadorUno = 0;
-        puntosJugadorDos = 0;
+        puntosJugador1 = 0;
+        puntosJugador2 = 0;
     }
     
-    public int getPuntajeJ1() {
-        return puntosJugadorUno;
-    }
-    
-    public int getPuntajeJ2() {
-        return puntosJugadorDos;
+    public int getPuntaje(Jugadores jugador) {
+        switch (jugador) {
+        case JUGADOR_1:
+            return puntosJugador1;
+        case JUGADOR_2:
+            return puntosJugador2;
+        default:
+            return 0;
+        }
     }
 
-    public void puntoParaJugador1() {
-        puntosJugadorUno += 15;
+    public void agregarPunto(Jugadores jugador) {
+        switch (jugador) {
+        case JUGADOR_1:
+            puntosJugador1 += 15;
+            break;
+        case JUGADOR_2:
+            puntosJugador2 += 15;
+            break;
+        }
     }
 }
