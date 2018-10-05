@@ -2,12 +2,12 @@ package ar.edu.untref.dyasc;
 
 import java.lang.reflect.Array;
 
-import ar.edu.untref.dyasc.Enums.TableroElementos;
+//import ar.edu.untref.dyasc.Enums.TableroElementos;
 import ar.edu.untref.dyasc.Enums.TableroOrientacion;
 
 public class Tablero {
     
-    private ArrayList<Barco> barcos; 
+    /*private ArrayList<Barco> barcos; 
     
     
     public Tablero(){
@@ -20,5 +20,5 @@ public class Tablero {
     
     public TableroElementos getElemento(int posX, int posY){
         return mapa[posY][posX];
-    }
+    }*/
 }
