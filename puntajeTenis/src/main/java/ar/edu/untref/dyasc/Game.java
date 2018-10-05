@@ -2,13 +2,23 @@ package ar.edu.untref.dyasc;
 
 public class Game {
 
+    private int puntosJugadorUno;
+    private int puntosJugadorDos;
+    
+    public Game(){
+        puntosJugadorUno = 0;
+        puntosJugadorDos = 0;
+    }
+    
     public int getPuntajeJ1() {
-        // TODO Auto-generated method stub
-        return 0;
+        return puntosJugadorUno;
     }
     
     public int getPuntajeJ2() {
-        // TODO Auto-generated method stub
-        return 0;
+        return puntosJugadorDos;
+    }
+
+    public void puntoParaJugador1() {
+        puntosJugadorUno += 15;
     }
 }
