@@ -26,27 +26,41 @@ public class Game {
         }
     }
 
-    public void agregarPunto(Jugadores jugador) {
+    public void agregarPunto(Jugadores jugador) {        
         switch (jugador) {
         case JUGADOR_1:
-            puntosJugador1 = calcularProximoPuntaje(puntosJugador1, puntosJugador2);
+            if(puntuacion[puntosJugador2] == Puntaje.VENTAJA){
+                puntosJugador2--;
+                return;
+            }
+            puntosJugador1 = calcularProximoPuntaje(puntosJugador1,
+                    puntosJugador2);
             break;
         case JUGADOR_2:
-            puntosJugador2 = calcularProximoPuntaje(puntosJugador2, puntosJugador1);
+            if(puntuacion[puntosJugador1] == Puntaje.VENTAJA){
+                puntosJugador1--;
+                return;
+            }
+            puntosJugador2 = calcularProximoPuntaje(puntosJugador2,
+                    puntosJugador1);
             break;
         }
     }
-    
-    public int calcularProximoPuntaje(int sumador, int otro){
-        if(puntuacion[sumador] == Puntaje._40){
-            if(puntuacion[otro] == Puntaje._40){
+
+    private boolean isDeuce() {
+        return puntosJugador1 == puntosJugador2
+                && puntuacion[puntosJugador1] == Puntaje._40;
+    }
+
+    public int calcularProximoPuntaje(int sumador, int otro) {
+        if (puntuacion[sumador] == Puntaje._40) {
+            if (puntuacion[otro] == Puntaje._40) {
                 return sumador + 1;
-            }
-            else{
+            } else {
                 return sumador + 2;
             }
         }
         return sumador + 1;
     }
-    
+
 }

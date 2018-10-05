@@ -171,7 +171,7 @@ public class TestGame {
     }
     
     @Test
-    public void jugador2GanaEnDeuce(){
+    public void jugador2GanaEnVentaja(){
 
         Game game = new Game();
 
@@ -189,6 +189,27 @@ public class TestGame {
         
         Assert.assertEquals(Puntaje._40, puntajeJ1);
         Assert.assertEquals(Puntaje.GANO, puntajeJ2);
+    }
+    
+    @Test
+    public void jugador1HaceUnPuntoConJugador2EnVentaja(){
+
+        Game game = new Game();
+
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_2);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        
+        Puntaje puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
+        Puntaje puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
+        
+        Assert.assertEquals(Puntaje._40, puntajeJ1);
+        Assert.assertEquals(Puntaje._40, puntajeJ2);
     }
     
     
