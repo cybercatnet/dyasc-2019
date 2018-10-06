@@ -234,4 +234,15 @@ public class TestGame {
         
         Assert.assertFalse(game.finalizo());
     }
+    
+    @Test (expected = GameFinalizadoException.class)
+    public void agregarPuntoConGameFinalizado(){
+        Game game = new Game();
+    
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+        game.agregarPunto(Jugadores.JUGADOR_1);
+    }
 }

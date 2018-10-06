@@ -27,6 +27,9 @@ public class Game {
     }
 
     public void agregarPunto(Jugadores jugador) {        
+        if(finalizo()){
+            throw new GameFinalizadoException();
+        }
         switch (jugador) {
         case JUGADOR_1:
             if(puntuacion[puntosJugador2] == Puntaje.VENTAJA){
@@ -46,12 +49,7 @@ public class Game {
             break;
         }
     }
-
-    private boolean isDeuce() {
-        return puntosJugador1 == puntosJugador2
-                && puntuacion[puntosJugador1] == Puntaje._40;
-    }
-
+    
     public int calcularProximoPuntaje(int sumador, int otro) {
         if (puntuacion[sumador] == Puntaje._40) {
             if (puntuacion[otro] == Puntaje._40) {
