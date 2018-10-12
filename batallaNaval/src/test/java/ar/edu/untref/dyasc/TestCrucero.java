@@ -9,7 +9,7 @@ public class TestCrucero {
     public void CreamosUnCruceroYConsultamosLaLasCoordenadasDeLaSegundaPosicionQuePosee() {
         Crucero crucero = new Crucero(2,6);
         
-        Posicion segundaPosicion = crucero.getPosiciones().get(0);
+        Posicion segundaPosicion = crucero.getPosiciones().get(1);
         
         Assert.assertEquals(2, segundaPosicion.x);
         Assert.assertEquals(7, segundaPosicion.y);
