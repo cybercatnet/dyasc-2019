@@ -17,20 +17,20 @@ public class Set {
 
     public int getPuntaje(Jugadores jugador) {
         int gamesJugador = 0;
-        for (int i = 0; i < games.size() - 2; i++) {
+        for (int i = 0; i < games.size(); i++) {
             if (obtenerGanadorGame(games.get(i)) == jugador) {
                 gamesJugador++;
             }
-        }
-        Game ultimoGame = games.get(games.size() - 1);
-        if (ultimoGame.finalizo() && obtenerGanadorGame(ultimoGame) == jugador) {
-            gamesJugador++;
         }
         return gamesJugador;
     }
 
     public void agregarPunto(Jugadores jugador) {
-        games.get(games.size() - 1).agregarPunto(jugador);
+        Game ultimoGame = games.get(games.size() - 1);
+        ultimoGame.agregarPunto(jugador);
+        if (ultimoGame.finalizo()) {
+            games.add(new Game());
+        }
     }
 
     private Jugadores obtenerGanadorGame(Game game) {

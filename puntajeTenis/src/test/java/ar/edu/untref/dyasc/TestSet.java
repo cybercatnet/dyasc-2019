@@ -23,7 +23,7 @@ public class TestSet {
     public void sumar1PuntosAlJugador1() {
         Set set = new Set();
 
-        set.agregarPunto(Jugadores.JUGADOR_1);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 1);
         int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
         int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
 
@@ -35,14 +35,29 @@ public class TestSet {
     public void jugador1GanaUnGame() {
         Set set = new Set();
 
-        set.agregarPunto(Jugadores.JUGADOR_1);
-        set.agregarPunto(Jugadores.JUGADOR_1);
-        set.agregarPunto(Jugadores.JUGADOR_1);
-        set.agregarPunto(Jugadores.JUGADOR_1);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 4);
         int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
         int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
 
         Assert.assertEquals(1, puntajeJ1);
         Assert.assertEquals(0, puntajeJ2);
+    }
+
+    @Test
+    public void jugador1Gana3Games() {
+        Set set = new Set();
+
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 12);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+
+        Assert.assertEquals(3, puntajeJ1);
+        Assert.assertEquals(0, puntajeJ2);
+    }
+
+    private void agregarPuntos(Set set, Jugadores jugador, int puntos) {
+        for (int i = 0; i < puntos; i++) {
+            set.agregarPunto(jugador);
+        }
     }
 }
