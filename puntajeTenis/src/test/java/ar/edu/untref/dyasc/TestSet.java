@@ -83,6 +83,53 @@ public class TestSet {
         Assert.assertEquals(Jugadores.JUGADOR_2, ganador);
     }
 
+    @Test
+    public void jugador1GanaElSetPorDiferenciaDeDos() {
+        Set set = new Set();
+
+        this.agregarPuntos(set, Jugadores.JUGADOR_2, 16);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 24);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+        Jugadores ganador = set.getGanador();
+
+        Assert.assertEquals(6, puntajeJ1);
+        Assert.assertEquals(4, puntajeJ2);
+        Assert.assertEquals(Jugadores.JUGADOR_1, ganador);
+    }
+
+    @Test
+    public void jugador1NoGanaElSetPorNoTenerDiferenciaDeDos() {
+        Set set = new Set();
+
+        this.agregarPuntos(set, Jugadores.JUGADOR_2, 20);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 24);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+        Jugadores ganador = set.getGanador();
+
+        Assert.assertEquals(6, puntajeJ1);
+        Assert.assertEquals(5, puntajeJ2);
+        Assert.assertNull(ganador);
+    }
+
+    @Test
+    public void jugador1GanaEnTieBreak() {
+        Set set = new Set();
+
+        this.agregarPuntos(set, Jugadores.JUGADOR_2, 20);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 24);
+        this.agregarPuntos(set, Jugadores.JUGADOR_2, 4);
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 7);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+        Jugadores ganador = set.getGanador();
+
+        Assert.assertEquals(7, puntajeJ1);
+        Assert.assertEquals(6, puntajeJ2);
+        Assert.assertEquals(Jugadores.JUGADOR_1, ganador);
+    }
+
     private void agregarPuntos(Set set, Jugadores jugador, int puntos) {
         for (int i = 0; i < puntos; i++) {
             set.agregarPunto(jugador);
