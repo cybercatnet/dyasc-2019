@@ -9,6 +9,8 @@ import Enums.Puntaje;
 public class Set {
 
     private List<Game> games;
+    private int gamesJugador1;
+    private int gamesJugador2;
 
     public Set() {
         this.games = new ArrayList<Game>();
@@ -17,41 +19,35 @@ public class Set {
 
     public int getPuntaje(Jugadores jugador) {
         int gamesJugador = 0;
-        for (int i = 0; i < games.size(); i++) {
-            if (obtenerGanadorGame(games.get(i)) == jugador) {
-                gamesJugador++;
-            }
+        if (jugador == Jugadores.JUGADOR_1) {
+            gamesJugador = gamesJugador1;
+        } else if (jugador == Jugadores.JUGADOR_2) {
+            gamesJugador = gamesJugador2;
         }
         return gamesJugador;
     }
 
     public void agregarPunto(Jugadores jugador) {
+        if (getGanador() != null) {
+            throw new SetFinalizadoException();
+        }
         Game ultimoGame = games.get(games.size() - 1);
         ultimoGame.agregarPunto(jugador);
         if (ultimoGame.finalizo()) {
+            if (ultimoGame.getPuntaje(Jugadores.JUGADOR_1) == Puntaje.GANO) {
+                gamesJugador1++;
+            } else {
+                gamesJugador2++;
+            }
             games.add(new Game());
         }
     }
 
-    private Jugadores obtenerGanadorGame(Game game) {
-        Jugadores ganador = null;
-        if (game.finalizo()) {
-            if (game.getPuntaje(Jugadores.JUGADOR_1) == Puntaje.GANO) {
-                ganador = Jugadores.JUGADOR_1;
-            } else {
-                ganador = Jugadores.JUGADOR_2;
-            }
-        }
-        return ganador;
-    }
-
     public Jugadores getGanador() {
         Jugadores ganador = null;
-        int puntajeJugador1 = getPuntaje(Jugadores.JUGADOR_1);
-        int puntajeJugador2 = getPuntaje(Jugadores.JUGADOR_2);
-        if ((puntajeJugador1 == 6 && puntajeJugador2 < 5) || puntajeJugador1 == 7) {
+        if ((gamesJugador1 == 6 && gamesJugador2 < 5) || gamesJugador1 == 7) {
             ganador = Jugadores.JUGADOR_1;
-        } else if ((puntajeJugador2 == 6 && puntajeJugador1 < 5) || puntajeJugador2 == 7) {
+        } else if ((gamesJugador2 == 6 && gamesJugador1 < 5) || gamesJugador2 == 7) {
             ganador = Jugadores.JUGADOR_2;
         }
         return ganador;
