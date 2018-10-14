@@ -30,4 +30,19 @@ public class TestSet {
         Assert.assertEquals(0, puntajeJ1);
         Assert.assertEquals(0, puntajeJ2);
     }
+
+    @Test
+    public void jugador1GanaUnGame() {
+        Set set = new Set();
+
+        set.agregarPunto(Jugadores.JUGADOR_1);
+        set.agregarPunto(Jugadores.JUGADOR_1);
+        set.agregarPunto(Jugadores.JUGADOR_1);
+        set.agregarPunto(Jugadores.JUGADOR_1);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+
+        Assert.assertEquals(1, puntajeJ1);
+        Assert.assertEquals(0, puntajeJ2);
+    }
 }
