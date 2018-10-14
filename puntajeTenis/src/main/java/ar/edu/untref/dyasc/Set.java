@@ -45,4 +45,8 @@ public class Set {
         return ganador;
     }
 
+    public Jugadores getGanador() {
+        return Jugadores.JUGADOR_1;
+    }
+
 }

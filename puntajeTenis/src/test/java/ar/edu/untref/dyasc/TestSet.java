@@ -55,6 +55,20 @@ public class TestSet {
         Assert.assertEquals(0, puntajeJ2);
     }
 
+    @Test
+    public void jugador1GanaElSet() {
+        Set set = new Set();
+
+        this.agregarPuntos(set, Jugadores.JUGADOR_1, 24);
+        int puntajeJ1 = set.getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJ2 = set.getPuntaje(Jugadores.JUGADOR_2);
+        Jugadores ganador = set.getGanador();
+
+        Assert.assertEquals(6, puntajeJ1);
+        Assert.assertEquals(0, puntajeJ2);
+        Assert.assertEquals(Jugadores.JUGADOR_1, ganador);
+    }
+
     private void agregarPuntos(Set set, Jugadores jugador, int puntos) {
         for (int i = 0; i < puntos; i++) {
             set.agregarPunto(jugador);
