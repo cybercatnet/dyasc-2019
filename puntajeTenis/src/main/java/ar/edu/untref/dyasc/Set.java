@@ -46,7 +46,15 @@ public class Set {
     }
 
     public Jugadores getGanador() {
-        return Jugadores.JUGADOR_1;
+        Jugadores ganador = null;
+        int puntajeJugador1 = getPuntaje(Jugadores.JUGADOR_1);
+        int puntajeJugador2 = getPuntaje(Jugadores.JUGADOR_2);
+        if ((puntajeJugador1 == 6 && puntajeJugador2 < 5) || puntajeJugador1 == 7) {
+            ganador = Jugadores.JUGADOR_1;
+        } else if ((puntajeJugador2 == 6 && puntajeJugador1 < 5) || puntajeJugador2 == 7) {
+            ganador = Jugadores.JUGADOR_2;
+        }
+        return ganador;
     }
 
 }
