@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enums.Jugadores;
-import Enums.Puntaje;
+import Enums.ValorPuntajeGame;
 
 public class Set {
 
@@ -34,7 +34,7 @@ public class Set {
         Game ultimoGame = games.get(games.size() - 1);
         ultimoGame.agregarPunto(jugador);
         if (ultimoGame.finalizo()) {
-            if (ultimoGame.getPuntaje(Jugadores.JUGADOR_1) == Puntaje.GANO) {
+            if (ultimoGame.getPuntaje(Jugadores.JUGADOR_1) == ValorPuntajeGame.GANO) {
                 gamesJugador1++;
             } else {
                 gamesJugador2++;
@@ -47,7 +47,8 @@ public class Set {
         Jugadores ganador = null;
         if ((gamesJugador1 == 6 && gamesJugador2 < 5) || gamesJugador1 == 7) {
             ganador = Jugadores.JUGADOR_1;
-        } else if ((gamesJugador2 == 6 && gamesJugador1 < 5) || gamesJugador2 == 7) {
+        } else if ((gamesJugador2 == 6 && gamesJugador1 < 5)
+                || gamesJugador2 == 7) {
             ganador = Jugadores.JUGADOR_2;
         }
         return ganador;

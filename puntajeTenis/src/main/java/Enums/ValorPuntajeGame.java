@@ -1,6 +1,6 @@
 package Enums;
 
-public enum Puntaje {
+public enum ValorPuntajeGame {
     _0,
     _15,
     _30,
