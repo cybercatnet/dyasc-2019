@@ -1,68 +1,66 @@
 package ar.edu.untref.dyasc;
 
 import Enums.Jugadores;
-import Enums.Puntaje;
+import Enums.ValorPuntajeGame;
 
 public class Game {
 
-    private Puntaje[] puntuacion = { Puntaje._0, Puntaje._15, Puntaje._30,
-            Puntaje._40, Puntaje.VENTAJA, Puntaje.GANO };
-    private int puntosJugador1;
-    private int puntosJugador2;
+    private PuntajeGame puntajeJugador1;
+    private PuntajeGame puntajeJugador2;
 
     public Game() {
-        puntosJugador1 = 0;
-        puntosJugador2 = 0;
+        puntajeJugador1 = new PuntajeGame();
+        puntajeJugador2 = new PuntajeGame();
     }
 
-    public Puntaje getPuntaje(Jugadores jugador) {
+    public ValorPuntajeGame getPuntaje(Jugadores jugador) {
         switch (jugador) {
         case JUGADOR_1:
-            return puntuacion[puntosJugador1];
+            return puntajeJugador1.getPuntaje();
         case JUGADOR_2:
-            return puntuacion[puntosJugador2];
+            return puntajeJugador2.getPuntaje();
         default:
-            return Puntaje._0;
+            return ValorPuntajeGame._0;
         }
     }
 
-    public void agregarPunto(Jugadores jugador) {        
-        if(finalizo()){
+    public void agregarPunto(Jugadores jugador) {
+        if (finalizo()) {
             throw new GameFinalizadoException();
         }
         switch (jugador) {
         case JUGADOR_1:
-            if(puntuacion[puntosJugador2] == Puntaje.VENTAJA){
-                puntosJugador2--;
+            if (puntajeJugador2.getPuntaje() == ValorPuntajeGame.VENTAJA) {
+                puntajeJugador2.quitarPunto();
                 return;
             }
-            puntosJugador1 = calcularProximoPuntaje(puntosJugador1,
-                    puntosJugador2);
+            calcularProximoPuntaje(puntajeJugador1, puntajeJugador2);
             break;
         case JUGADOR_2:
-            if(puntuacion[puntosJugador1] == Puntaje.VENTAJA){
-                puntosJugador1--;
+            if (puntajeJugador1.getPuntaje() == ValorPuntajeGame.VENTAJA) {
+                puntajeJugador1.quitarPunto();
                 return;
             }
-            puntosJugador2 = calcularProximoPuntaje(puntosJugador2,
-                    puntosJugador1);
+            calcularProximoPuntaje(puntajeJugador2, puntajeJugador1);
             break;
         }
     }
-    
-    public int calcularProximoPuntaje(int sumador, int otro) {
-        if (puntuacion[sumador] == Puntaje._40) {
-            if (puntuacion[otro] == Puntaje._40) {
-                return sumador + 1;
+
+    public void calcularProximoPuntaje(PuntajeGame sumador, PuntajeGame otro) {
+        if (sumador.getPuntaje() == ValorPuntajeGame._40) {
+            if (otro.getPuntaje() == ValorPuntajeGame._40) {
+                sumador.setPuntaje(ValorPuntajeGame.VENTAJA);
+                return;
             } else {
-                return sumador + 2;
+                sumador.setPuntaje(ValorPuntajeGame.GANO);
+                return;
             }
         }
-        return sumador + 1;
+        sumador.agregarPunto();
     }
 
     public boolean finalizo() {
-        return puntuacion[puntosJugador1] == Puntaje.GANO || puntuacion[puntosJugador2] == Puntaje.GANO;
+        return puntajeJugador1.getPuntaje() == ValorPuntajeGame.GANO
+                || puntajeJugador2.getPuntaje() == ValorPuntajeGame.GANO;
     }
-
 }
