@@ -48,6 +48,7 @@ public class TestGame {
 
         game.agregarPunto(Jugadores.JUGADOR_1);
         game.agregarPunto(Jugadores.JUGADOR_1);
+        
         ValorPuntajeGame puntajeJ1 = game.getPuntaje(Jugadores.JUGADOR_1);
         ValorPuntajeGame puntajeJ2 = game.getPuntaje(Jugadores.JUGADOR_2);
 
